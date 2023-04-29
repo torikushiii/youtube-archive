@@ -1,0 +1,35 @@
+{
+  "name": "youtube-archiver",
+  "module": "index.js",
+  "type": "module",
+  "description": "Simple YouTube archiver",
+  "scripts": {
+    "start": "DEBUG=db:*,api:* node .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "author": "torikushiii",
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.3",
+    "bun-types": "^0.5.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-unicorn": "^46.0.0"
+  },
+  "dependencies": {
+    "cron": "^2.3.0",
+    "debug": "4.3.1",
+    "mongodb": "^5.3.0",
+    "xml2js": "^0.5.0",
+    "ytdl-core": "^4.11.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torikushiii/youtube-archive"
+  },
+  "homepage": "https://github.com/torikushiii/youtube-archive#readme"
+}
