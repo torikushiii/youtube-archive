@@ -1,12 +1,13 @@
 import { CronJob } from "cron";
 import("./src/modules/mongo.js");
+import { CRON_TIMINGS } from "./config.js";
 import debug from "./src/modules/logger.js";
 
 const youtube = async () => {
 	const TIMINGS = {
-		VIDEO_UPDATER: "*/5 * * * *",
-		VIDEO_ARCHIVER: "*/10 * * * *",
-		XML_CRAWLER: "*/1 * * * *"
+		VIDEO_UPDATER: CRON_TIMINGS.VIDEO_UPDATER ?? "*/5 * * * *",
+		VIDEO_ARCHIVER: CRON_TIMINGS.VIDEO_ARCHIVER ?? "*/10 * * * *",
+		XML_CRAWLER: CRON_TIMINGS.XML_CRAWLER ?? "*/1 * * * *"
 	};
 
 	const [videoUpdater, xmlCrawler, videoArchiver] = await Promise.all([

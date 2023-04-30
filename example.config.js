@@ -6,6 +6,12 @@ const DISCORD_WEBHOOK = null;
 const GOOGLE_API_KEY = null;
 const CHANNEL_IDS = [];
 
+const CRON_TIMINGS = {
+	VIDEO_UPDATER: "*/5 * * * *",
+	VIDEO_ARCHIVER: "*/10 * * * *",
+	XML_CRAWLER: "*/1 * * * *"
+};
+
 export {
 	LOG,
 	ARCHIVE_VIDEOS,
