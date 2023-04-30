@@ -38,6 +38,7 @@ const init = async () => {
 
 class VideoArchiver {
 	#video;
+	#info;
 
 	constructor (video) {
 		this.#video = video;
@@ -47,6 +48,8 @@ class VideoArchiver {
 		const { _id: id } = this.#video;
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		const info = await ytdl.getInfo(url);
+
+		this.#info = info;
 
 		logger.info(`Archiving video ${id}...`);
 
@@ -81,7 +84,7 @@ class VideoArchiver {
 	}
 
 	async #downloadVideo (format) {
-		const { _id: id } = this.#video;
+		const { _id: id, channelId } = this.#video;
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		const video = ytdl(url, { format });
 
@@ -100,10 +103,18 @@ class VideoArchiver {
 			logger.error(`Error downloading video ${id}.`, error);
 		});
 
-		const path = `./videos/${id}.mp4`;
+		const channelPath = `./videos/${channelId}`;
+		if (!fs.existsSync(channelPath)) {
+			fs.mkdirSync(channelPath);
+		}
+
+		const path = `./videos/${channelId}/${id}.mp4`;
 		const file = fs.createWriteStream(path);
-		
+
 		video.pipe(file);
+
+		const infoPath = `./videos/${channelId}/${id}.json`;
+		fs.writeFileSync(infoPath, JSON.stringify(this.#info, null, 4));
 
 		return new Promise((resolve, reject) => {
 			file.on("finish", () => {
