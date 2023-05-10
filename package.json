@@ -5,6 +5,7 @@
   "description": "Simple YouTube archiver",
   "scripts": {
     "start": "DEBUG=db:*,api:* node .",
+    "init": "node -e \"require('./channels/index.js').init();\"",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
