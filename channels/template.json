@@ -1,0 +1,27 @@
+[
+    {
+        "name": "",
+        "platformId": "",
+        "channelId": "",
+        "details": {
+            "": ""
+        }
+    },
+    {
+        "name": "Channel name",
+        "platformId": "yt = youtube, tt = twitch",
+        "channelId": "Unique identifier, YouTube channel ID or Twitch channel name",
+        "details": {
+            "twitter": "Not required",
+            "key1": "value1"
+        }
+    },
+    {
+        "name": "Google",
+        "platformId": "yt",
+        "channelId": "UCK8sQmJBp8GCxrOtXWBpyEA",
+        "details": {
+            "twitter": "google"
+        }
+    }
+]
