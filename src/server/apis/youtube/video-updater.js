@@ -1,6 +1,6 @@
-import query from "../../modules/mongo.js";
-import { debug, youtube } from "../../modules/index.js";
-import database from "../database-manager/youtube.js";
+import query from "../../../modules/mongo.js";
+import database from "../../database-manager/youtube.js";
+import { debug, youtube } from "../../../modules/index.js";
 
 const ONE_HOUR = 36e5;
 const db = debug("api:youtube:mongo");

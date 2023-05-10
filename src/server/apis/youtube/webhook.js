@@ -1,6 +1,6 @@
 import got from "got";
-import { debug } from "../../modules/index.js";
-import { DISCORD_WEBHOOK } from "../../../config.js";
+import { debug } from "../../../modules/index.js";
+import { DISCORD_WEBHOOK } from "../../../../config.js";
 
 const logger = debug("api:discord:webhook");
 

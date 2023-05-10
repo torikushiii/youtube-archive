@@ -11,9 +11,9 @@ const youtube = async () => {
 	};
 
 	const [videoUpdater, xmlCrawler, videoArchiver] = await Promise.all([
-		import("./src/server/apis/video-updater.js").then(api => api.default),
-		import("./src/server/apis/xml-crawler.js").then(api => api.default),
-		import("./src/server/apis/video-archiver.js").then(api => api.default)
+		import("./src/server/apis/youtube/video-updater.js").then(api => api.default),
+		import("./src/server/apis/youtube/xml-crawler.js").then(api => api.default),
+		import("./src/server/apis/youtube/video-archiver.js").then(api => api.default)
 	]);
 
 	new CronJob(TIMINGS.VIDEO_UPDATER, () => videoUpdater.init()).start();

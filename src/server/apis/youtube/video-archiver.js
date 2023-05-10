@@ -1,8 +1,8 @@
 import ytdl from "ytdl-core";
 import fs from "fs";
-import query from "../../modules/mongo.js";
-import debug from "../../modules/logger.js";
-import { ARCHIVE_VIDEOS } from "../../../config.js";
+import query from "../../../modules/mongo.js";
+import debug from "../../../modules/logger.js";
+import { ARCHIVE_VIDEOS } from "../../../../config.js";
 
 const db = debug("api:youtube:mongo");
 const logger = debug("api:youtube:video-archiver");

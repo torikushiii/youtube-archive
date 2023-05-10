@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
-import webhook from "../apis/webhook.js";
 import query from "../../modules/mongo.js";
 import debug from "../../modules/logger.js";
+import webhook from "../apis/youtube/webhook.js";
 
 const logger = debug("api:youtube:database-manager");
 
@@ -41,4 +41,17 @@ database.on("update-videos", async (videos) => {
 
 	results = results.filter(result => result.modifiedCount > 0);
 	logger.log(`Updated ${results.length} videos.`);
+});
+
+database.on("update-channels", async (channels) => {
+	logger.log(`Updating ${channels.length} channels...`);
+	let result = await Promise.all(channels
+		.map(channel => query.collection("channels").updateOne(
+			{ channelId: channel.channelId },
+			{ $set: channel }
+		))
+	);
+
+	result = result.filter(result => result.modifiedCount > 0);
+	logger.log(`Updated ${result.length} channels.`);
 });

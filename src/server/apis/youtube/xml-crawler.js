@@ -1,8 +1,8 @@
 import got from "got";
-import debug from "../../modules/logger.js";
+import debug from "../../../modules/logger.js";
 import { parseStringPromise } from "xml2js";
-import { CHANNEL_IDS } from "../../../config.js";
-import database from "../database-manager/youtube.js";
+import { CHANNEL_IDS } from "../../../../config.js";
+import database from "../../database-manager/youtube.js";
 
 const logger = debug("api:youtube:xml-crawler");
 
