@@ -170,3 +170,4 @@ dist
 
 config.js
 videos/*
+channels/defaults/*
