@@ -16,10 +16,16 @@ $ npm i
 $ cp example.config.js config.js
 # Make sure to edit the config file with your own API key and channels.
 
+# Create a directory called group inside channels, then add your own
+# channels inside the group directory using template.json.
+
+# After populating the channels, run:
+$ npm run init
+
 # If all goes well, you should be able to run the script.
 $ npm start
 # Please note that if you run the script using node directly, logger may not work properly.
 ```
 
 ## Limitations
-* The script only work for the first new 15 videos of a channel.
+* ~~The script only work for the first new 15 videos of a channel.~~
