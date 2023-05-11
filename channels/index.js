@@ -6,7 +6,7 @@ import youtubeUpdaters from "./apps/updaters/youtube-updaters.js";
 import youtubeChannelScraper from "./apps/scrapers/youtube-scraper.js";
 
 const logger = debug("channels");
-const DIR = "../channels/defaults";
+const DIR = "./channels/defaults";
 
 const saveChannel = async (filename, dry = false, save = true, async = false) => {
 	const groupName = filename.replace(".json", "");
@@ -145,7 +145,7 @@ const groupMemberObject = (channels) => {
 	);
 };
 
-const init = async () => {
+export async function init () {
 	const validate = await validateChannel();
 	if (!validate) {
 		logger.error("Channel validation failed.");
@@ -155,6 +155,4 @@ const init = async () => {
 	await saveChannels({ dry: false, save: true }, true);
 	await updateChannels();
 	await scrapeChannels();
-};
-
-init();
+}
