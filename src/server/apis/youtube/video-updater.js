@@ -40,8 +40,7 @@ const fetchYouTubeVideoData = async (ids) => {
 	const result = await youtube.videos({
 		part: "snippet,liveStreamingDetails",
 		fields: "items(id,snippet,liveStreamingDetails)",
-		id: ids.join(","),
-		hl: "ja"
+		id: ids.join(",")
 	}).then(res => res.items.map(parseVideo));
 
 	logger.log(`Fetched data for ${result?.length ?? 0} videos. Status: ${result ? "OK" : "ERROR"}`);

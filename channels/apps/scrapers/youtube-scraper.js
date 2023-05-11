@@ -50,7 +50,7 @@ const listPlaylistItems = async (playlistId, pageToken = "") => {
 const listVideos = async (items, group) => {
 	videoList.info(`Fetching ${items.length} videos...`);
 
-	const result = youtube.videos({
+	const result = await youtube.videos({
 		part: "snippet,liveStreamingDetails",
 		fields: "items(id,snippet(channelId,title,publishedAt),liveStreamingDetails(scheduledStartTime,actualStartTime,actualEndTime,concurrentViewers))",
 		id: items.map(item => item.snippet.resourceId.videoId).join(",")
@@ -79,25 +79,11 @@ const parseVideos = ({ id, snippet, liveStreamingDetails }, group) => {
 			end: actualEndTime ? new Date(actualEndTime) : undefined
 		},
 		archived: false,
-		status: getVideoStatus(liveStreamingDetails),
+		status: "new",
 		viewers: +concurrentViewers || null,
 		updatedAt: new Date()
 	};
 };
-
-const getVideoStatus = (liveStreamingDetails) => {
-	if (!liveStreamingDetails) {
-		return "uploaded";
-	}
-
-	const { actualStartTime, actualEndTime } = liveStreamingDetails;
-	return actualEndTime
-		? "ended"
-		: (actualStartTime
-			? "live"
-			: "upcoming");
-};
-
 
 const scrapeChannel = async (channelId, group) => {
 	let status;
