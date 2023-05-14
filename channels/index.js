@@ -6,7 +6,7 @@ import youtubeUpdaters from "./apps/updaters/youtube-updaters.js";
 import youtubeChannelScraper from "./apps/scrapers/youtube-scraper.js";
 
 const logger = debug("channels");
-const DIR = "./channels/defaults";
+const DIR = "./channels/groups";
 
 const saveChannel = async (filename, dry = false, save = true, async = false) => {
 	const groupName = filename.replace(".json", "");

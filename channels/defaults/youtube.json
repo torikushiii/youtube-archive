@@ -1,0 +1,16 @@
+[
+    {
+        "name": "YouTube",
+        "platformId": "yt",
+        "channelId": "UCBR8-60-B28hp2BmDPdntcQ",
+        "details": {
+            "twitter": "youtube",
+            "website": "https://www.youtube.com/"
+        }
+    },
+    {
+        "name": "YouTube Music",
+        "platformId": "yt",
+        "channelId": "UCStaiwu-FAgp_RC_tBiLh9A"
+    }
+]
